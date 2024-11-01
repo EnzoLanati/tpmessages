@@ -21,6 +21,14 @@ public class MessageService {
     public List<Message> getAllMessages(){
         return messages;
     }
+    public Optional<Message> getMessageById(Long id) {
+        return messages.stream().filter(msg->msg.getId().equals(id)).findFirst();
+    }
+    public Message addMessage(Message msg) {
+    msg.setId(nextId++);
+    messages.add(msg);
+    return msg;
+    }
     
    
 }
