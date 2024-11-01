@@ -29,6 +29,16 @@ public class MessageService {
     messages.add(msg);
     return msg;
     }
+    public Message updateMessage(Long id, Message updateMessage){
+        Optional<Message> oldMessage = getMessageById(id);
+        if (oldMessage.isPresent()){
+            Message msg = oldMessage.get();
+            msg.setUser(updateMessage.getUser());
+            msg.setMessage(updateMessage.getMessage());
+            return msg;
+        }
+        return null;
+    }
     
    
 }
